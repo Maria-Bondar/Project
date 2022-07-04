@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Салон Skincare</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+    />
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+  </head>
+  <body>
+    <!--Шапка сайту-->
+    <div class="background-photo">
+      <div class="header">
+        <a href="#default" class="logo">Салон краси Skincare</a>
+        <div class="header-right">
+          <a class="navigation-link active" href="#main">Головна</a>
+          <a class="navigation-link" href="#skincare">Послуги</a>
+          <a class="navigation-link" href="#doctors">Наші спеціалісти</a>
+          <a class="navigation-link" href="#reviews">Відгуки</a>
+          <a class="navigation-link" href="#contact">Контакти</a>
+          <p>
+            <button type="button" id="buttonOrder">Записатися онлайн</button>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--Модальне вікно-->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="white-modal">
+          <p class="nameOrder">Привіт:) Ми раді, що ви тут!</p>
+          <p class="textOrder">
+            Для запису потрібно ввести свої дані – ім'я та номер телефону! Після
+            цього оберіть послугу та спеціаліста!
+          </p>
+          <div class="input-name">
+            <p class="enterName"><b>Ім'я:</b></p>
+            <input
+              type="name"
+              id="name"
+              value=""
+              style="height: 30px; width: 200px"
+            />
+            <p class="enterNumber"><b>Телефон:</b></p>
+            <input
+              type="phone-number"
+              id="number"
+              value=""
+              style="height: 30px; width: 200px"
+            />
+          </div>
+        </div>
+        <!-- Select вибору спеціаліста і послуги -->
+        <p class="choose-specislist">Виберіть спеціаліста:</p>
+        <select multiply name="specialist" id="person" value="">
+          <option value="Христина Гордій">Христина Гордій</option>
+          <option value="Катерина Антонова">Катерина Антонова</option>
+          <option value="Роксолана Іванів">Роксолана Іванів</option>
+          <option value="Ксенія Вікторів">Ксенія Вікторів</option>
+          <option value="Наталія Павлова">Наталія Павлова</option>
+        </select>
+        <p class="choose-beauty">Виберіть процедуру:</p>
+        <select name="beauty" id="beauty-list">
+          <option value="Консультація косметолога">
+            Консультація косметолога
+          </option>
+          <option value="Гігієна обличчя">Гігієна обличчя</option>
+          <option value="Стимулюючий пілінг ZO Skin Health">
+            Стимулюючий пілінг ZO Skin Health>
+          </option>
+          <option value="Пілінг Enerpeel">Пілінг Enerpeel</option>
+          <option value="Біоревіталізація обличчя">
+            Біоревіталізація обличчя
+          </option>
+          <option value="Ботулінотерапія">Ботулінотерапія</option>
+          <option value="Контурна пластика губ">Контурна пластика губ</option>
+          <option value="Масаж обличчя">Масаж обличчя</option>
+          <option value="Масаж спини">Масаж спини</option>
+          <option value="Лікувальний масаж тіла">Лікувальний масаж тіла</option>
+          <option value="Лімфодренажний масаж">Лімфодренажний масаж></option>
+          <option value="Анти-стрес масаж тіла">Анти-стрес масаж тіла</option>
+          <option value="Антицелюлітний масаж тіла">
+            Антицелюлітний масаж тіла
+          </option>
+          <option value="Догляд для тіла від ZO Skin Health">
+            Догляд для тіла від ZO Skin Health
+          </option>
+          <option value="Манікюр">Манікюр</option>
+          <option value="Чистка нігтів">Чистка нігтів</option>
+          <option value="Покриття гель-лаком">Покриття гель-лаком</option>
+          <option value="Нарощення нігтів">Нарощення нігтів</option>
+          <option value="Педикюр">Педикюр</option>
+          <option value="Догляд для рук та ніг">Догляд для рук та ніг</option>
+          <option value="Корекція брів пінцетом/воском">
+            Корекція брів пінцетом/воском
+          </option>
+          <option value="Фарбування брів фарбою/хною">
+            Фарбування брів фарбою/хною
+          </option>
+          <option value="Довготривала укладка брів">
+            Довготривала укладка брів
+          </option>
+          <option value="Фарбування вій фарбою/хною">
+            Фарбування вій фарбою/хною
+          </option>
+          <option value="Ламінування вій">Ламінування вій</option>
+          <option value="Догляд для вій та брів">Догляд для вій та брів</option>
+        </select>
+        <div class="calendar">
+        <p class="data">Оберіть дату: <input type="text" id="datepicker"></p>
+        </div>
+        <p>
+          <button type="button" id="buttonRegistration">Записатися</button>
+        </p>
+      </div>
+    </div>
+    <div id="myModal2" class="modal2">
+      <div class="modal-content2">
+        <span class="close2">&times;</span>
+        <p class="textOrder2"></p>
+        <p>
+          <button type="button" id="buttonClose">Закрити</button>
+        </p>
+      </div>
+    </div>
+    <!--Головне про салон краси-->
+    <div>
+      <div style="padding-left: 20px">
+        <h1 class="about-us">Про нас</h1>
+        <div class="right-picture">
+          <img src="main2.jpg" width="600px" height="350px" />
+          <div class="text1">
+            <p>Ласкаво просимо до нашого салону краси – Skincare!</p>
+            <p>
+              Наш салон – це місце, в яке хочеться повернутись. Ми створюємо
+              максимально комфортну та приємну атмосферу, підбираємо класну
+              музику та пригощаємо смачною кавою, щоб кожна процедура
+              перетворювалась у відпочинок. І, звісно ж, не залишаємо клієнтів
+              без подарунків.
+            </p>
+            <p>
+              У нас є ліцензія МОЗ, що гарантує високу якість послуг. Також ми
+              працюємо тільки на новітньому обладнанні, яке гарантує повну
+              безпеку та найкращий результат.
+            </p>
+            <p>
+              Наш персонал представляє собою дипломованих спеціалістів, які
+              мають медичну освіту і постійно вдосконалюють свої навички. Лікарі
+              нашого салону постійно вдосконалюють свої знання та навички на
+              семінарах, тренінгах та курсах.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--Послуги і ціни-->
+      <div>
+        <h1 class="services" id="skincare">Послуги</h1>
+        <div class="text2">
+          <p>
+            Косметологія обличчя в Skincare – це доступний набір процедур для
+            лікування та омолодження шкіри. Ми підбираємо догляди, котрі дійсно
+            потрібні людині у конкретному випадку, а також косметику, що
+            гарантовано приведе до бажаного результату.
+          </p>
+        </div>
+        <div class="picture-cosmetology">
+          <img src="cosmetolog.jpg" width="600px" height="350px" />
+        </div>
+        <h2 class="cosmetology">Косметологія</h2>
+        <ul id="cosmetology-list">
+          <li>Консультація косметолога</li>
+          <li>Гігієна обличчя</li>
+          <li>Стимулюючий пілінг від ZO</li>
+          <li>Біоревіталізація обличчя</li>
+          <li>Ботулінотерапія</li>
+          <li>Контурна пластика губ</li>
+        </ul>
+        <button type="button" id="showCosmetologyPrice">Показати ціни</button>
+        <ul id="cosmetology-price">
+          <li class="firstCosmetology"></li>
+          <li class="secondCosmetology"></li>
+          <li class="thirdCosmetology"></li>
+          <li class="fourthCosmetology"></li>
+          <li class="fifthCosmetology"></li>
+          <li class="sixthCosmetology"></li>
+        </ul>
+        <div class="picture-massage">
+          <img src="massage.jpg" width="600px" height="350px" />
+        </div>
+        <h2 class="massage">Масаж</h2>
+        <ul id="massage-list">
+          <li>Масаж обличчя</li>
+          <li>Масаж спини</li>
+          <li>Лікувальний масаж тіла</li>
+          <li>Лімфодренажний масаж</li>
+          <li>Антицелюлітний масаж тіла</li>
+          <li>Догляд для тіла від ZO</li>
+        </ul>
+        <button type="button" id="showMassagePrice">Показати ціни</button>
+        <ul id="massage-price">
+          <li class="firstMassage"></li>
+          <li class="secondMassage"></li>
+          <li class="thirdMassage"></li>
+          <li class="fourthMassage"></li>
+          <li class="fifthMassage"></li>
+          <li class="sixthMassage"></li>
+        </ul>
+      </div>
+      <div>
+        <div class="picture-nail">
+          <img src="nail.jpg" width="600px" height="350px" />
+        </div>
+        <h2 class="nail">Манікюр і педикюр</h2>
+        <ul id="nail-list">
+          <li>Манікюр</li>
+          <li>Чистка нігтів</li>
+          <li>Покриття гель-лаком</li>
+          <li>Нарощення нігтів</li>
+          <li>Педикюр</li>
+          <li>Догляд для рук та ніг</li>
+        </ul>
+        <button type="button" id="showNailPrice">Показати ціни</button>
+        <ul id="nail-price">
+          <li class="firstNail"></li>
+          <li class="secondNail"></li>
+          <li class="thirdNail"></li>
+          <li class="fourthNail"></li>
+          <li class="fifthNail"></li>
+          <li class="sixthNail"></li>
+        </ul>
+      </div>
+      <div>
+        <div class="picture-brow">
+          <img src="brow.jpg" width="600px" height="350px" />
+        </div>
+        <p class="brow">Брови та вії</p>
+        <ul id="brow-list">
+          <li>Корекція брів</li>
+          <li>Фарбування брів</li>
+          <li>Довготривала укладка брів</li>
+          <li>Ламінування вій</li>
+          <li>Фарбування вій</li>
+          <li>Догляд для вій і брів</li>
+        </ul>
+        <button type="button" id="showBrowPrice">Показати ціни</button>
+        <ul id="brow-price">
+          <li class="firstBrow"></li>
+          <li class="secondBrow"></li>
+          <li class="thirdBrow"></li>
+          <li class="fourthBrow"></li>
+          <li class="fifthBrow"></li>
+          <li class="sixthBrow"></li>
+        </ul>
+      </div>
+    </div>
+    <!--Лікарі салону-->
+    <div>
+      <div>
+        <h1 class="doctors" id="doctors">Наші спеціалісти</h1>
+        <h2 class="text-doctors">
+          Хочемо познайомити вас з нашими спеціалістами. Наш персонал – це
+          дипломовані фахівці, які мають медичну освіту і постійно вдосконалюють
+          свої навички. Лікарі нашого салону щомісяця відвідують семінари,
+          тренінги та курси.
+        </h2>
+      </div>
+      <div>
+        <div class="doctor-photo1">
+          <img src="doctor1.jpg" width="430px" height="440px" />
+          <div class="textPhoto1">Роксолана Іванів</div>
+        </div>
+        <div class="text-doctor1">
+          <p>
+            Це – Роксолана, лікар дерматокосметолог та трихолог. Член
+            української асоціації лікарів-дерматологів та косметологів, викладач
+            курсу косметології.
+          </p>
+          <p>
+            Ніколи не порадить вам ін‘єкційні процедури, якщо на це немає
+            потреби, бо вона працює лише за потребами вашої шкіри та здоров’я, а
+            не модними віяннями.
+          </p>
+          <p>
+            Профіль: естетична косметологія, дерматологія , дерматоскопія та
+            видалення новоутворів, ін‘єкційна косметологія, трихологія.
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="doctor-photo2">
+          <img src="doctor2.jpg" width="430px" height="440px" />
+          <div class="textPhoto2">Христина Гордій</div>
+        </div>
+        <div class="text-doctor2">
+          <p>
+            А це – наша Христина. Вона дерматовенеролог та косметолог, лікар за
+            освітою. Для неї краса починається саме з якості шкіри.
+          </p>
+          <p>
+            У своїй роботі Христина обирає максимально комплексний підхід. Якщо
+            це дерматологічні консультації, тоді розбирається все на дрібні
+            деталі, спосіб життя, харчування, догляд.
+          </p>
+          <p>
+            Профіль: дерматологічні/трихологічні консультації, лікування шкірних
+            хворіб, ін‘єкційна косметологія, естетична косметологія, діагностика
+            новоутворів.
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="doctor-photo3">
+          <img src="doctor3.jpg" width="430px" height="440px" />
+          <div class="textPhoto3">Катерина Антонова</div>
+        </div>
+        <div class="text-doctor3">
+          <p>
+            Знайомтесь, наша масажистка – Катерина. Вона – лікар-радіолог,
+            обрала таку спеціальність, щоб чітко на рентгені вивчати скелет
+            пацієнта і персонально підбирати лікування масажем.
+          </p>
+          <p>
+            Для неї масаж не про релакс, масаж для Катерини – це в першу чергу
+            потужний інструмент покращення здоров‘я та якості життя. Тож, вона
+            не випустить пацієнта без повного анамнезу та чітких рекомендацій.
+          </p>
+          <p>
+            Катерина знає абсолютно всі анатомічні можливості тіла і з
+            захопленям все це пояснює своїм пацієнтам.
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="doctor-photo4">
+          <img src="doctor4.jpg" width="430px" height="440px" />
+          <div class="textPhoto4">Ксенія Вікторів</div>
+        </div>
+        <div class="text-doctor4">
+          <p>
+            Наша nail-майстер Ксенія. Вона захоплюється своєю справою та з
+            задоволенням зробить вам манікюр з дизайном, який ви собі вигадаєте.
+          </p>
+          <p>
+            Ксенія дуже відповідальна та завжди дослухається до побажань
+            клієнта. І якщо ви в нас вже були, то знаєте, що манікюр та педикюр
+            тут зроблять на найвищому рівні.
+          </p>
+          <p>
+            А ще Ксенія дуже любить поговорити та завжди зробить вам смачної
+            кави, щоб ви повністю розслабилися на процедурі.
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="doctor-photo5">
+          <img src="doctor5.jpg" width="430px" height="440px" />
+          <div class="textPhoto5">Наталія Павлова</div>
+        </div>
+        <div class="text-doctor5">
+          <p>
+            А це наш бровист-ламімейкер Наталія. Вона страшенний фанат своєї
+            справи, тож постійно ходить на навчання та кожного місяця підвищує
+            кваліфікацію.
+          </p>
+          <p>
+            Наталія проводить корекцію, фарбування брів, довготривалу укладку
+            брів, висвітлення брів та ламінування вій. Вона зробить не шаблонні
+            брівки, а natural-ефект та підкреслить вашу індивідуальність.
+          </p>
+          <p>
+            До того ж, Наталя – страшенний перфекціоніст, в неї все має бути
+            ідеально та швидко. І за 1,5 години вона зможе зробити вам і
+            ламінування вій, і брівки.
+          </p>
+        </div>
+      </div>
+      <!--Відгуки клієнтів-->
+      <div>
+        <div>
+          <h1 class="reviews" id="reviews">Відгуки</h1>
+        </div>
+        <div>
+          <div class="slider">
+            <div class="backgroung-reviews"></div>
+            <div class="slider-track">
+              <div class="slide">
+                <div class="glassmorfism">
+                  <div class="review-photo1">
+                    <img src="review1.png" width="200px" height="200px" />
+                  </div>
+                  <h5 class="name1">Бондар Марія</h5>
+                  <p class="review-1">
+                    Була на процедурі пілінгу в Христини! Вона просто
+                    професіонал своєї справи, розповіла багато порад та секретів
+                    по догляду за шкірою! Я задоволена поцедурою, тепер моя
+                    шкіра сяє та дуже зволожена!
+                  </p>
+                </div>
+              </div>
+              <div class="slide">
+                <div class="glassmorfism2">
+                  <div class="review-photo2">
+                    <img src="review2.png" width="200px" height="200px" />
+                  </div>
+                  <h5 class="name2">Корнійчук Анна</h5>
+                  <p class="review-2">
+                    Відвідала нещодавно ваш масаж! Пані Катерина врятувала мою
+                    спину. Вона розмасажувала всі зажими, через які в мене
+                    боліла спина. Дуже пощастило до неї потрапити. Обов'язково
+                    прийду ще!
+                  </p>
+                </div>
+              </div>
+              <div class="slide">
+                <div class="glassmorfism3">
+                  <div class="review-photo3">
+                    <img src="review3.png" width="180px" height="180px" />
+                  </div>
+                  <div>
+                    <h5 class="name3">Оліховська Аліна</h5>
+                    <p class="review-3">
+                      Робила у вас манікюр та педикюр нещодавно. Дуже
+                      сподобалося, що все якісно та швидко зробили. Гель-лак
+                      тримався більше 3 тижнів. Буду рекомендувати ваш салон
+                      подругам!
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="slide">
+                <div class="glassmorfism4">
+                  <div class="review-photo4">
+                    <img src="review4.png" width="180px" height="180px" />
+                  </div>
+
+                  <div>
+                    <h5 class="name4">Чернецька Вікторія</h5>
+                    <p class="review-4">
+                      Робила у вас ламінування вій! Дуже красиво вийшло! Ефект
+                      був понад місяць. Дякую! Вже записалася на нову процедуру)
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="slider-arrows">
+              <button type="button" class="slider-nav">&larr;</button>
+              <button type="button" class="slider-nav-next">&rarr;</button>
+            </div>
+          </div>
+          <!--Контакти-->
+          <div></div>
+        </div>
+      </div>
+      <div>
+        <h1 class="contact" id="contact">Контакти</h1>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2572.817975187243!2d24.010061829832935!3d49.845877631383196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473add97bce93195%3A0xce1d7485ed001e25!2z0KjQtdCy0YfQtdC90LrQsCA2MC8z!5e0!3m2!1suk!2sua!4v1656656788508!5m2!1suk!2sua"
+          width="600"
+          height="450"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          class="map"
+        ></iframe>
+        <div class="text-contact">
+          <h3>Зв'яжіться з нами!</h3>
+          <p>
+            Наш салон розташований у Львові за адресою - вулиця Шевченка, 60.
+          </p>
+          <p><b>Години роботи:</b> 10:00 - 19:00</p>
+          <p><b>Номер телефону</b> - +380683874676</p>
+          <p><b>Email</b> – skincare@gmail.com</p>
+          <p>
+            Будемо раді бачити вас у вашому салоні! Тут на вас чекає приємна
+            атмосфера, магія для вашого обличчя та тіла, а також смачна кава.
+          </p>
+        </div>
+      </div>
+    </div>
+    <script>
+    $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
+    <script src="index.js"></script>
+  </body>
+</html>
